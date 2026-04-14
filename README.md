@@ -51,6 +51,58 @@ Didoo AI is a no-code AI Agent platform built specifically for small and medium 
 - Priority support for campaign troubleshooting
 - Cancel anytime with no long-term contracts
 
+## AI Agent Skills for Meta Ads
+
+Published by Didoo AI — Your AI Media Buyer. One that actually knows you, built for SMBs.
+
+A modular skill system that covers the full Meta Ads lifecycle — from planning to analysis to optimization. Each skill is self-contained and designed for AI agents to execute specific workflows independently.
+
+### Skill Workflow
+
+```
+PLAN          →  EXECUTE         →  ANALYSIS        →  RECOMMENDATION
+research       builder            healthcheck          ads-recommendation
+strategy       publisher          lead-gen-analysis    (single exit point
+budget         scale-campaign     creative-fatigue     for all analysis)
+                                  drop-diagnosis
+                                  audience-analysis
+
+REPORT         ←  reference (shared knowledge layer)
+daily-pulse
+weekly-perf    guide / fundamentals / capi-setup
+```
+
+### Skill Categories
+
+| Category | Skills | What it does |
+|----------|--------|--------------|
+| **Reference** | guide, fundamentals, capi-setup | Entry point, core concepts, tracking setup |
+| **Plan** | research, strategy, budget-planning | Market intel, campaign design, budget allocation |
+| **Execute** | builder, publisher, scale-campaign | Creative production, campaign changes, scaling |
+| **Analysis** | healthcheck, lead-gen-analysis, creative-fatigue, drop-diagnosis, audience-analysis | Performance diagnosis across all dimensions |
+| **Recommendation** | ads-recommendation | Prioritized action plans — all analysis routes here |
+| **Report** | daily-pulse, weekly-performance | Scheduled monitoring and weekly reviews |
+
+### Getting Started
+
+Start with **`reference/meta-guide`** — it routes you to the right skill based on what you need to do.
+
+### Install Skills
+
+```bash
+# Clone this repo
+git clone https://github.com/elias-didoo/Didoo-Marketing.git
+
+# Install individual skills (example with skills.sh CLI)
+npx skills add elias-didoo/Didoo-Marketing --skill meta-guide
+npx skills add elias-didoo/Didoo-Marketing --skill meta-ads-analysis
+
+# Or install the full system
+npx skills add elias-didoo/Didoo-Marketing --all
+```
+
+Skills are organized in folders. Point your agent to the folder path directly for any specific skill.
+
 ## Reviews
 > “Didoo had my little skincare shop clocking 17 sales in three days—no fancy agency, just me and my laptop. My mind is officially blown.” – Lily Chen, Solo Founder, Vegan Skincare Startup
 
