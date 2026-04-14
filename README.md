@@ -78,7 +78,7 @@ performance
 
 | Category | Skills | What it does |
 |----------|--------|--------------|
-| **Reference** | meta-guide, meta-fundamentals, meta-capi-setup | Entry point, core concepts, tracking setup |
+| **Reference** | meta-ads-guide, meta-ads-fundamentals, meta-ads-capi-setup | Entry point, core concepts, tracking setup |
 | **Plan** | meta-ads-research, meta-ads-strategy, meta-ads-budget-planning | Market intel, campaign design, budget allocation |
 | **Execute** | meta-ads-builder, meta-ads-publisher, meta-ads-scale-campaign | Creative production, campaign changes, scaling |
 | **Analysis** | meta-ads-analysis, meta-ads-healthcheck, meta-ads-lead-gen-analysis, meta-ads-creative-fatigue, meta-ads-drop-diagnosis, meta-ads-audience-analysis | Performance diagnosis across all dimensions |
@@ -98,7 +98,7 @@ Skills are organized under **`Meta Ads Skills/`** by category (Reference, Plan, 
 git clone https://github.com/elias-didoo/Didoo-Marketing.git
 
 # Install individual skills by folder path (example with skills.sh CLI)
-npx skills add elias-didoo/Didoo-Marketing --skill Reference/meta-guide
+npx skills add elias-didoo/Didoo-Marketing --skill Reference/meta-ads-guide
 npx skills add elias-didoo/Didoo-Marketing --skill Analysis/meta-ads-analysis
 
 # Install all skills in a category
