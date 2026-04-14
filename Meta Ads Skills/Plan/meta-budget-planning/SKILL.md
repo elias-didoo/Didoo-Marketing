@@ -1,5 +1,5 @@
 ---
-name: meta-budget-planning
+name: meta-ads-budget-planning
 description: "[Didoo AI] Framework for planning and allocating Meta Ads budget across campaigns, audiences, and testing phases. Use when launching first campaigns, planning quarterly budgets, or allocating spend across multiple campaigns."
 ---
 
@@ -152,3 +152,9 @@ Testing velocity:
 - Testing minimum: 20% of total budget always reserved for new tests
 - Scale ceiling: When CPL rises > 15% after budget increase = stop scaling
 - 5-adset max per CBO campaign: More adsets = less budget per adset = slower learning
+
+---
+
+## Next Step
+
+After completing budget planning → go to **meta-ads-strategy** to define campaign structure (CBO vs ABO, audience targeting, bidding approach) using the budget you've allocated.

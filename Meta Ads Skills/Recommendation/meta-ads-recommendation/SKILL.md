@@ -11,21 +11,18 @@ Loaded when user wants to know what to do about their campaign performance — a
 ---
 
 ## Prerequisites
+
 Before giving recommendations, you need performance data. Either:
-1. Run meta-ads-analysis first to get the analysis conclusions
+1. Run an analysis skill first (meta-ads-analysis, meta-ads-lead-gen-analysis, meta-ads-audience-analysis, etc.)
 2. Or use the analysis data already in the conversation
 
 If no analysis data exists: *"I need to look at your campaign data before I can give recommendations. What time period should I analyze?"*
 
 ---
 
-## Data Expected from meta-ads-analysis
-meta-ads-analysis stores the following in session context — read from there:
-- funnel_weak_points: Where is the biggest drop-off? (CTR, LPV rate, conversion rate)
-- trend_signals: Which metrics are getting worse? Which are healthy?
-- anomalies: Anything unusual? (frequency > 3, budget not delivering, zero results with spend)
-- data_quality: Is there enough data to act on? (less than 3 days or less than 50 results = caution zone)
-- lp_diagnosis: Is the problem on the ad side or landing page side?
+## Session Context Keys This Skill Reads
+
+This skill is the single exit point for all analysis outputs. Read the relevant keys from session context before producing recommendations. See the full table at the bottom of this file.
 
 ---
 
@@ -76,14 +73,21 @@ If nothing needs fixing: say so and give 1–2 things to keep an eye on.
 When funnel data points to the landing page (LPV rate or CVR is the weak point), run this diagnostic before recommending creative or audience changes.
 
 ### Step 4a: LPV Rate Check
-| LPV Rate | Indicates |
-|---|---|
-| E-commerce < 70% | Landing page issue likely |
-| E-commerce ≥ 70% | Ad-to-page alignment is healthy |
-| Lead gen < 50% | Investigate form or page |
-| Lead gen ≥ 50% | LPV is not the bottleneck |
 
-If LPV is healthy but CVR is low → problem is deeper in the funnel (offer, pricing, trust signals).
+**First — determine campaign type:**
+- Lead gen / Conversions objective → use Lead gen benchmarks below
+- E-commerce / Purchase objective → use E-commerce benchmarks below
+
+| Campaign Type | LPV Rate | Indicates |
+|---|---|---|
+| E-commerce | < 70% | Landing page issue likely |
+| E-commerce | ≥ 70% | Ad-to-page alignment is healthy |
+| Lead gen | < 50% | Investigate form or page |
+| Lead gen | ≥ 50% | LPV is not the bottleneck |
+
+**E-commerce only:** If LPV is healthy but CVR is low → problem is deeper in the funnel (offer, pricing, trust signals).
+
+**Lead gen only:** If LPV is healthy but CPL is still high → check form friction (Step 4c) and CAPI status (Step 4b) before concluding the landing page is fine.
 
 ### Step 4b: CAPI Connection Check
 Before diagnosing an LPV or CVR problem:
@@ -195,16 +199,17 @@ This skill is the single exit point for all analysis outputs. Read the relevant 
 | trend_signals | meta-ads-analysis | Direction of key metrics |
 | anomalies | meta-ads-analysis | Unusual findings |
 | data_quality | meta-ads-analysis | Whether data is sufficient to act on |
-| lp_diagnosis | meta-ads-analysis / meta-lead-gen-analysis | Ad side vs. landing page side |
-| capi_status | meta-lead-gen-analysis | CAPI connection status |
-| cpl_breakdown | meta-lead-gen-analysis | Which funnel stage is the CPL bottleneck |
-| recommended_fix_priority | meta-lead-gen-analysis | Ranked fix order for lead gen |
-| budget_reallocation_plan | meta-audience-analysis | Specific audience budget shifts |
-| audience_issues | meta-audience-analysis | Overlap and misallocation findings |
-| rotation_pipeline | meta-creative-fatigue | Creative inventory by status |
-| fatigue_level | meta-creative-fatigue | Per-creative fatigue classification |
-| days_until_death | meta-creative-fatigue | Estimated creative lifespan |
-| primary_root_cause | meta-drop-diagnosis | Root cause of sudden performance drop |
-| recovery_plan | meta-drop-diagnosis | Structured recovery steps |
+| lp_diagnosis | meta-ads-lead-gen-analysis (primary) | Ad side vs. landing page side — lead-gen-specific diagnosis |
+| lp_diagnosis_general | meta-ads-analysis (fallback) | Ad side vs. landing page side — general diagnosis |
+| capi_status | meta-ads-lead-gen-analysis | CAPI connection status |
+| cpl_breakdown | meta-ads-lead-gen-analysis | Which funnel stage is the CPL bottleneck |
+| recommended_fix_priority | meta-ads-lead-gen-analysis | Ranked fix order for lead gen |
+| budget_reallocation_plan | meta-ads-audience-analysis | Specific audience budget shifts |
+| audience_issues | meta-ads-audience-analysis | Overlap and misallocation findings |
+| rotation_pipeline | meta-ads-creative-fatigue | Creative inventory by status |
+| fatigue_level | meta-ads-creative-fatigue | Per-creative fatigue classification |
+| days_until_death | meta-ads-creative-fatigue | Estimated creative lifespan |
+| primary_root_cause | meta-ads-drop-diagnosis | Root cause of sudden performance drop |
+| recovery_plan | meta-ads-drop-diagnosis | Structured recovery steps |
 
 > If no analysis context keys are present, ask the user: "I need to analyze your campaign data first. What time period should I look at?"

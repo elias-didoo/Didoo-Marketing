@@ -1,6 +1,6 @@
 ---
 name: meta-ads-healthcheck
-description: "[Didoo AI] Fast on-demand campaign status check — answers \"are my ads working?\" using Green/Yellow/Red thresholds. For daily routine monitoring, use meta-daily-pulse instead."
+description: "[Didoo AI] Fast on-demand campaign status check — answers \"are my ads working?\" using Green/Yellow/Red thresholds. For daily routine monitoring, use meta-ads-daily-pulse instead."
 ---
 
 ## Required Credentials
@@ -12,7 +12,7 @@ description: "[Didoo AI] Fast on-demand campaign status check — answers \"are 
 ## When to Use
 When user wants a quick "are my ads working?" check — not a deep diagnostic, just a status update. Use before a meeting, or any time something feels off.
 
-|  | meta-ads-healthcheck | meta-daily-pulse |
+|  | meta-ads-healthcheck | meta-ads-daily-pulse |
 |---|---|---|
 | Primary question | "Is this campaign healthy or not?" | "Did anything change vs. last week?" |
 | Comparison basis | Fixed Green/Yellow/Red thresholds | Same day of prior week (WoW) |
@@ -38,7 +38,7 @@ Score each campaign as Green / Yellow / Red:
 | Signal | Green | Yellow | Red |
 |---|---|---|---|
 | Delivery | Spending normally | < 80% of budget | < 50% or zero |
-| Cost per result | At or below target | 10–30% above target | 30%+ above target |
+| Cost per result | At or below target | 10–30% above target (and variance is normal) | 30%+ above target **and sustained** (not just a spike) |
 | Frequency | < 3 | 3–4 | > 4 |
 | Learning | Out of learning | In learning (< 7 days) | Stuck in learning |
 | CTR | > 1% | 0.5–1% | < 0.5% |
@@ -49,13 +49,13 @@ Score each campaign as Green / Yellow / Red:
 Before flagging a campaign as Yellow or Red, confirm it's not normal fluctuation.
 
 **Normal fluctuation — monitor only:**
-- Day-to-day CPA variation within 20–30%
+- CPA is bouncing around day-to-day (up to ±30%) but the rolling average is stable — this is normal Meta Ads volatility, not a problem
 - Weekend vs. weekday differences
 - Gradual changes over weeks
 - Variation while in Learning Phase
 
 **Concerning — investigate today:**
-- Sudden, sustained cost increase > 50% for multiple consecutive days
+- CPA average has shifted up and stayed there for 3+ consecutive days (not just a one-day spike) — this is a real trend, not fluctuation
 - Delivery dropping to near zero with no budget change
 - Conversion rate declining while spend increases
 - Performance degradation after a recent edit
@@ -76,9 +76,9 @@ For each Yellow or Red campaign, identify:
 
 **Creative Refresh Trigger — Frequency > 3:**
 When frequency reaches 3 or higher, flag the campaign as "Creative Refresh Needed":
-"Campaign [X] has frequency at [N] — audience is seeing the same ads too often. This typically causes CTR to drop and CPL to rise. Recommend refreshing creative variants."
+"Campaign [X] has frequency at [N] — audience is seeing the same ads too often. This typically causes CTR to drop and CPL to rise. Creative refresh is indicated."
 
-When this flag appears, consider triggering meta-ads-builder to generate 2–3 new creative variations.
+> Note: When this flag appears, the appropriate next step is `meta-ads-recommendation` — it will prescribe the specific creative refresh action based on the full analysis context. Do not trigger `meta-ads-builder` directly from this skill.
 
 ---
 
@@ -91,7 +91,7 @@ For each Red/Yellow campaign:
 - Status: [Issue]
 - Spend / Results / CPL
 - What happened (1 sentence)
-- Recommended action (1 sentence)
+- Suggested focus area (1 sentence)
 
 Everything else: brief healthy summary.
 ```
@@ -109,7 +109,7 @@ When you have 10+ active campaigns:
 
 ## When to Escalate
 - If the health check surfaces a real problem: suggest meta-ads-analysis for a full diagnostic
-- For daily routine monitoring: suggest meta-daily-pulse instead
+- For daily routine monitoring: suggest meta-ads-daily-pulse instead
 
 ---
 

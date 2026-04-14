@@ -1,6 +1,6 @@
 ---
-name: meta-creative-fatigue
-description: "[Didoo AI] Analyzes creative fatigue signals across Meta Ads campaigns. Use when reviewing declining CTR or ROAS, planning creative rotation schedules, or managing creative lifecycle. Run standalone or after meta-daily-pulse flags creative fatigue."
+name: meta-ads-creative-fatigue
+description: "[Didoo AI] Analyzes creative fatigue signals across Meta Ads campaigns. Use when reviewing declining CTR or ROAS, planning creative rotation schedules, or managing creative lifecycle. Run standalone or after meta-ads-daily-pulse flags creative fatigue."
 ---
 
 ## Required Credentials

@@ -1,5 +1,5 @@
 ---
-name: meta-daily-pulse
+name: meta-ads-daily-pulse
 description: "[Didoo AI] Rapid daily health scan for Meta Ads — detects week-over-week performance changes and flags urgent issues before meetings. Use every morning or before any daily review meeting. This is a change detector, not a full diagnostic."
 ---
 
@@ -18,7 +18,7 @@ Use every morning or before any daily review meeting. This skill is a change det
 
 Not sure which monitoring skill to use?
 
-|  | meta-daily-pulse | meta-ads-healthcheck |
+|  | meta-ads-daily-pulse | meta-ads-healthcheck |
 |---|---|---|
 | Primary question | "Did anything change vs. last week?" | "Is this campaign healthy or not?" |
 | Comparison basis | Same day of prior week (WoW) | Fixed Green/Yellow/Red thresholds |
@@ -40,7 +40,40 @@ Fetch account-level metrics for yesterday and the same day of the prior week:
 - CTR, CPC, CPM, frequency
 - Conversions, cost per conversion
 
-Use get_account_insights for account-level, get_campaign_insights for campaign-level.
+Use exec + curl to call the Meta Graph API:
+
+**Account-level (yesterday):**
+```bash
+# Cross-platform date helper (Python, works on macOS and Linux):
+YESTERDAY=$(python3 -c "from datetime import date, timedelta; print((date.today() - timedelta(days=1)).isoformat())")
+SAME_DAY_LAST_WEEK=$(python3 -c "from datetime import date, timedelta; print((date.today() - timedelta(days=8)).isoformat())")
+
+curl -G "https://graph.facebook.com/v21.0/act_${META_AD_ACCOUNT_ID}/insights" \
+  -d "fields=spend,impressions,results,roas,ctr,cpc,cpm,frequency,conversion_rate" \
+  -d "time_range={'since':'${YESTERDAY}','until':'${YESTERDAY}'}" \
+  -d "access_token=${META_ACCESS_TOKEN}"
+```
+
+**Same day of prior week (7 days back):**
+```bash
+# Same YESTERDAY and SAME_DAY_LAST_WEEK variables as above
+
+curl -G "https://graph.facebook.com/v21.0/act_${META_AD_ACCOUNT_ID}/insights" \
+  -d "fields=spend,impressions,results,roas,ctr,cpc,cpm,frequency,conversion_rate" \
+  -d "time_range={'since':'${SAME_DAY_LAST_WEEK}','until':'${SAME_DAY_LAST_WEEK}'}" \
+  -d "access_token=${META_ACCESS_TOKEN}"
+```
+
+**Campaign-level (yesterday, if you need per-campaign breakdown):**
+```bash
+# Same YESTERDAY variable as above
+
+curl -G "https://graph.facebook.com/v21.0/act_${META_AD_ACCOUNT_ID}/insights" \
+  -d "fields=campaign_name,spend,impressions,results,roas,ctr,cpc,cpm,frequency" \
+  -d "level=campaign" \
+  -d "time_range={'since':'${YESTERDAY}','until':'${YESTERDAY}'}" \
+  -d "access_token=${META_ACCESS_TOKEN}"
+```
 
 **Important — Same Day of Prior Week comparison:**
 Meta Ads performance follows day-of-week patterns (e.g., Tuesdays often differ from Saturdays). Always compare each day to its same day of prior week — not the prior day. Comparing to the prior day creates false alarms.

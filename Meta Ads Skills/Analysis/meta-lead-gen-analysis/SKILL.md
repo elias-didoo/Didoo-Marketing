@@ -1,5 +1,5 @@
 ---
-name: meta-lead-gen-analysis
+name: meta-ads-lead-gen-analysis
 description: "[Didoo AI] Specialized analysis module for Meta lead generation campaigns. Use when CPL is elevated, lead quality is unclear, or you need to diagnose why leads aren't converting downstream. For general campaign analysis, use meta-ads-analysis."
 ---
 
@@ -48,38 +48,7 @@ Also ask the user:
 
 ---
 
-## Step 2: Diagnose the CPL Problem
-CPL can be high due to three distinct root causes. Diagnose which one before recommending solutions:
-
-### Root Cause A: Ad-to-Form Disconnect (LPV Rate < 50%)
-If LPV rate is low, users click the ad but don't reach or engage with the form.
-
-What to check:
-- Does the landing page load quickly on mobile?
-- Is the form visible above the fold without scrolling?
-- Does the ad headline match the landing page promise?
-- Is there too much friction before the form (popups, interstitials)?
-
-### Root Cause B: Form Friction (Form Submit Rate < 20%)
-If LPV rate is healthy but leads are low, the form itself is the bottleneck.
-
-What to check:
-- Number of form fields: > 4 fields causes severe drop-off
-- Field types: too many required fields increases abandonment
-- Trust signals: is it clear what happens after they submit?
-- Mobile optimization: can users easily fill out the form on phone?
-
-### Root Cause C: Audience or Offer Mismatch
-If both LPV rate and form submit rate look healthy but CPL is still high, the problem is upstream.
-
-What to check:
-- Is the audience targeting too broad? (Getting unqualified leads)
-- Is the offer compelling enough for this specific audience?
-- Is the creative clearly communicating what they'll get?
-
----
-
-## Step 3: CAPI Verification — Critical for Lead Gen
+## Step 2: CAPI Verification — Critical for Lead Gen
 Without CAPI sending offline lead data back to Meta:
 - Meta is optimizing for form submissions, not qualified leads
 - CPL shown may be "form submit cost" not "actual lead cost"
@@ -97,7 +66,7 @@ If CAPI is NOT connected for offline leads:
 
 ---
 
-## Step 4: Audience Targeting Analysis for Lead Gen
+## Step 3: Audience Targeting Analysis for Lead Gen
 ### Cold Audiences (Interest-Based Targeting)
 - Interest targeting works for cold audiences
 - Frequency builds fast — limit budget to avoid rapid fatigue
@@ -111,61 +80,27 @@ If CAPI is NOT connected for offline leads:
 
 ---
 
-## Step 5: Lead Gen LPV Rate Deep Dive
-| LPV Rate | Diagnosis | Action |
-|---|---|---|
-| > 70% | Excellent — high-intent audience | Scale |
-| 50–70% | Healthy — ad and page are aligned | Monitor |
-| 30–50% | Below average — check form friction | Investigate form |
-| < 30% | Poor — messaging mismatch or page issue | Fix ad-to-page alignment |
-
----
-
-## Step 6: Format Output
+## Step 4: Format Output
 
 **Lead Gen Health Summary:**
 - Spend / CPL / Lead Volume
-- LPV Rate vs. benchmark
+- LPV Rate vs. benchmark (> 50% healthy for lead gen)
 - Form Submit Rate (if available)
 - CAPI Status (connected / not connected)
 
-### SECTION 1: Funnel Bottleneck Diagnosis
-Identify which stage is causing CPL to exceed target:
-- [Stage: Ad Click → Landing Page View] — if LPV < 50%
-- [Stage: Landing Page View → Form Submit] — if LPV ≥ 50% but leads low
-- [Stage: Form Submit → Qualified Lead] — if CPL OK but quality poor (offline issue)
+### SECTION 1: CAPI Gap (if applicable)
+State whether offline lead data is being sent to Meta. Impact: algorithm is optimizing for quantity, not quality.
 
-### SECTION 2: CAPI Gap (if applicable)
-- State whether offline lead data is being sent to Meta
-- Impact: algorithm is optimizing for quantity, not quality
-- Recommended action to close the gap
+### SECTION 2: Audience Diagnosis
+Diagnose targeting based on frequency and CPL — is the audience too broad or well-matched?
 
-### SECTION 3: Audience and Targeting Issues
-- Narrow/wide diagnosis based on frequency and CPL
-- Recommendation on interest stacking or lookalike layers
+### SECTION 3: Funnel Stage
+Identify the CPL bottleneck stage:
+- LPV < 50% → Ad-to-Form disconnect
+- LPV ≥ 50% but low leads → Form friction (check form fields)
+- LPV and CVR OK but CPL high → Audience mismatch or CAPI not connected
 
-### SECTION 4: Form and Landing Page Issues
-- Form field count check
-- Mobile friction check
-- Messaging alignment check
-
----
-
-## Data Passing to meta-ads-recommendation
-After completing this analysis, store in session context:
-- lp_diagnosis: Ad side vs. Landing Page side vs. Audience side
-- capi_status: Connected / Not Connected / Partially Connected
-- cpl_breakdown: Which stage is causing the CPL problem
-- recommended_fix_priority: Audience / Creative / Form / CAPI (ranked by likely impact)
-
----
-
-## Rules
-- Apply lead gen benchmarks, not e-commerce benchmarks
-- Always verify CAPI status before diagnosing CPL issues — missing CAPI is the most common cause of misleading CPL data
-- Do not recommend creative changes if form friction is the bottleneck
-- Do not recommend audience changes if LPV rate indicates a page problem
-- This is analysis only — recommendations route to meta-ads-recommendation
+> **LP Landing Page diagnosis:** The full LP disconnect diagnostic (Step 4a–4d) lives in **meta-ads-recommendation → Step 4**. This skill identifies the funnel stage; recommendation prescribes the fix.
 
 ---
 
@@ -182,4 +117,17 @@ After completing analysis, store the following in session context:
 
 > meta-ads-recommendation reads these keys to produce the lead gen action plan.
 
-> ⚠️ Note: meta-ads-analysis writes overlapping keys (lp_diagnosis). If you have already run meta-ads-analysis in this session, copy any needed values to your working notes before running this skill — they will be overwritten.
+---
+
+## Key Collision Resolution
+
+> ⚠️ **Key priority:** `meta-ads-analysis` writes `lp_diagnosis_general`; this skill writes `lp_diagnosis` (the lead-gen-specific version). `meta-ads-recommendation` is configured to prefer `lp_diagnosis` when available — so running both skills in sequence does NOT cause overwriting. The two keys coexist.
+
+---
+
+## Rules
+- Apply lead gen benchmarks, not e-commerce benchmarks
+- Always verify CAPI status before diagnosing CPL issues — missing CAPI is the most common cause of misleading CPL data
+- Do not recommend creative changes if form friction is the bottleneck
+- Do not recommend audience changes if LPV rate indicates a page problem
+- This is analysis only — recommendations route to meta-ads-recommendation

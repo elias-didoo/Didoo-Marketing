@@ -122,7 +122,7 @@ Always clarify what "results" means when discussing cost_per_result.
 ---
 
 ## Step 4b: Lead Generation Campaigns
-> Use **meta-lead-gen-analysis** instead — it has dedicated LPV benchmarks for lead gen, form friction analysis, CAPI verification, and lead quality diagnosis.
+> Use **meta-ads-lead-gen-analysis** instead — it has dedicated LPV benchmarks for lead gen, form friction analysis, CAPI verification, and lead quality diagnosis.
 
 ---
 
@@ -170,22 +170,6 @@ Flag these when you see them:
 
 ---
 
-## Session Context — What This Skill Writes
-
-After completing analysis, store the following in session context:
-
-| Key | Description | Example |
-|-----|-------------|---------|
-| funnel_weak_points | Where the biggest funnel drop-off occurs | "LPV rate 52% — below 70% benchmark, ad-to-page mismatch likely" |
-| trend_signals | Direction of key metrics | "CTR declining 0.3pp over 3 weeks; CPM stable" |
-| anomalies | Unusual findings | "Frequency 4.2 on Runner Audience — fatigue risk" |
-| data_quality | Whether data is sufficient to act on | "Caution: only 4 days of data, < 50 results" |
-| lp_diagnosis | Ad side vs. landing page side | "Ad side — CTR 0.6%, LPV rate 78% (healthy)" |
-
-> ⚠️ Note: meta-lead-gen-analysis writes overlapping keys (lp_diagnosis, cpl_breakdown). If you have already run meta-lead-gen-analysis in this session, copy any needed values to your working notes before running this skill — they will be overwritten.
-
----
-
 ## Tone and Language
 - Match the language the user speaks (English or Chinese)
 - Speak as a professional growth partner — translate numbers into business insights
@@ -211,6 +195,6 @@ After completing analysis, store the following in session context:
 | trend_signals | Direction of key metrics | "CPM up 18% WoW; CTR down 0.4pp" |
 | anomalies | Anything unusual or unexpected | "Frequency 4.2 with CPL still at target" |
 | data_quality | Whether there's enough data to act | "Only 2 days — too early to judge" |
-| lp_diagnosis | Is the problem ad-side or landing page-side? | "Ad side — CTR declining, frequency stable" |
+| lp_diagnosis_general | Is the problem ad-side or landing page-side? | "Ad side — CTR declining, frequency stable" |
 
-> **Routing:** If the campaign is Lead Gen, route to meta-lead-gen-analysis and preserve these keys. meta-ads-recommendation reads these keys to produce the action plan.
+> **Routing:** If the campaign is Lead Gen, route to meta-ads-lead-gen-analysis and preserve these keys. meta-ads-recommendation reads these keys to produce the action plan.

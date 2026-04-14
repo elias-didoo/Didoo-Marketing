@@ -12,7 +12,7 @@ web_search, web_fetch, image-tools
 | META_ACCESS_TOKEN | Meta Developer Console → Graph API Explorer → Generate Token | Fetching creative performance data (optional) |
 | GEMINI_API_KEY | Google AI Studio → Create API Key | AI-powered image generation (optional — only if using AI image generation) |
 
-> No Meta API credentials are required for basic creative copy generation. Image generation tools are optional enhancements only.
+> **Credentials note:** No Meta API credentials are required for basic creative copy generation. META_ACCESS_TOKEN is optional — only needed if you want to pull existing creative performance data (CTR, frequency by creative) to inform the new variations. Image generation tools (GEMINI_API_KEY) are also optional enhancements only.
 
 ## When to Use
 When user needs actual ad creative — images, copy, headlines, or full ad variations. Works after meta-ads-strategy defines the campaign direction.

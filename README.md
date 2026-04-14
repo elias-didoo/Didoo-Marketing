@@ -60,32 +60,36 @@ A modular, production-grade skill system covering the full Meta Ads lifecycle �
 ### Skill Workflow
 
 ```
-Plan           →  Execute         →  Analysis        →  Recommendation
-research       builder            healthcheck          ads-recommendation
-strategy       publisher          lead-gen-analysis    (single exit point
-budget         scale-campaign     creative-fatigue     for all analysis)
-                                  drop-diagnosis
-                                  audience-analysis
+Plan               →  Execute            →  Analysis                     →  Recommendation
+meta-ads-research   meta-ads-builder      meta-ads-analysis              meta-ads-recommendation
+meta-ads-strategy   meta-ads-publisher     meta-ads-healthcheck            (single exit point
+meta-ads-budget-    meta-ads-scale-       meta-ads-lead-gen-analysis      for all analysis)
+planning            campaign              meta-ads-creative-fatigue
+                                          meta-ads-drop-diagnosis
+                                          meta-ads-audience-analysis
 
-Report         ←  Reference (shared knowledge layer)
-daily-pulse
-weekly-perf    guide / fundamentals / capi-setup
+Report              ←  Reference (shared knowledge layer)
+meta-ads-daily-pulse
+meta-ads-weekly-    meta-ads-guide / meta-ads-fundamentals / meta-ads-capi-setup
+performance
 ```
 
 ### Skill Categories
 
 | Category | Skills | What it does |
 |----------|--------|--------------|
-| **Reference** | guide, fundamentals, capi-setup | Entry point, core concepts, tracking setup |
-| **Plan** | research, strategy, budget-planning | Market intel, campaign design, budget allocation |
-| **Execute** | builder, publisher, scale-campaign | Creative production, campaign changes, scaling |
-| **Analysis** | healthcheck, lead-gen-analysis, creative-fatigue, drop-diagnosis, audience-analysis | Performance diagnosis across all dimensions |
-| **Recommendation** | ads-recommendation | Prioritized action plans — all analysis routes here |
-| **Report** | daily-pulse, weekly-performance | Scheduled monitoring and weekly reviews |
+| **Reference** | meta-guide, meta-fundamentals, meta-capi-setup | Entry point, core concepts, tracking setup |
+| **Plan** | meta-ads-research, meta-ads-strategy, meta-ads-budget-planning | Market intel, campaign design, budget allocation |
+| **Execute** | meta-ads-builder, meta-ads-publisher, meta-ads-scale-campaign | Creative production, campaign changes, scaling |
+| **Analysis** | meta-ads-analysis, meta-ads-healthcheck, meta-ads-lead-gen-analysis, meta-ads-creative-fatigue, meta-ads-drop-diagnosis, meta-ads-audience-analysis | Performance diagnosis across all dimensions |
+| **Recommendation** | meta-ads-recommendation | Prioritized action plans — all analysis routes here |
+| **Report** | meta-ads-daily-pulse, meta-ads-weekly-performance | Scheduled monitoring and weekly reviews |
 
 ### Getting Started
 
 Start with **`Reference/meta-guide`** — it routes you to the right skill based on what you need to do.
+
+Skills are organized under **`Meta Ads Skills/`** by category (Reference, Plan, Execute, Analysis, Recommendation, Report). Point your agent to the relevant folder path for any specific skill.
 
 ### Install Skills
 
@@ -93,15 +97,14 @@ Start with **`Reference/meta-guide`** — it routes you to the right skill based
 # Clone this repo
 git clone https://github.com/elias-didoo/Didoo-Marketing.git
 
-# Install individual skills (example with skills.sh CLI)
-npx skills add elias-didoo/Didoo-Marketing --skill meta-guide
-npx skills add elias-didoo/Didoo-Marketing --skill meta-ads-analysis
+# Install individual skills by folder path (example with skills.sh CLI)
+npx skills add elias-didoo/Didoo-Marketing --skill Reference/meta-guide
+npx skills add elias-didoo/Didoo-Marketing --skill Analysis/meta-ads-analysis
 
-# Or install the full system
-npx skills add elias-didoo/Didoo-Marketing --all
+# Install all skills in a category
+npx skills add elias-didoo/Didoo-Marketing --skill Analysis
+npx skills add elias-didoo/Didoo-Marketing --skill Plan
 ```
-
-Skills are organized in folders. Point your agent to the folder path directly for any specific skill.
 
 ## Reviews
 > “Didoo had my little skincare shop clocking 17 sales in three days—no fancy agency, just me and my laptop. My mind is officially blown.” – Lily Chen, Solo Founder, Vegan Skincare Startup

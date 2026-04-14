@@ -1,9 +1,15 @@
 ---
-name: meta-scale-campaign
-description: "[Didoo AI] Guides Meta Ads campaign scaling — increases budget, expands audiences, replicates to new geos. Use when a testing campaign has proven results and you want to scale it. Not for campaigns still in testing phase."
+name: meta-ads-scale-campaign
+description: "[Didoo AI] Guides Meta Ads campaign scaling — increases budget, expands audiences, replicates to new geos. Use when a testing campaign has exited Learning Phase (~50+ results in the past 7 days, CPL at or below target, stable metrics across 3–5 days) and you want to scale it. Not for campaigns still in testing phase."
 ---
 
 # Meta Ads Scale Campaign
+
+## Required Credentials
+| Credential | Where to Get | Used For |
+|-----------|-------------|---------|
+| META_ACCESS_TOKEN | Meta Developer Console → Graph API Explorer → Generate Token | Fetching campaign status and insights |
+| META_AD_ACCOUNT_ID | Ads Manager URL: `adsmanager.facebook.com/act_XXXXXXXXX` | Identifying which account to query |
 
 ## When to Use
 Loaded when a testing campaign has proven results and you want to scale it — increase spend, expand audience, or replicate to new geos. Not for campaigns still in testing phase.
@@ -12,7 +18,7 @@ Loaded when a testing campaign has proven results and you want to scale it — i
 
 ## Prerequisites
 Before scaling, confirm:
-1. Testing phase is complete — campaign has generated 50+ results and exited Learning (or is close)
+1. Testing phase is complete — campaign has generated ~50+ results in the past 7 days and exited Learning Phase (not just 50+ lifetime results)
 2. Cost per result is at or below target CPL/CPA
 3. Data is stable — metrics are consistent across at least 3–5 days
 
@@ -24,7 +30,7 @@ If any of the above are not confirmed, do not scale — return to meta-ads-analy
 Check the following signals:
 
 **Must have:**
-- 50+ results since last significant edit
+- Learning Phase has exited — need ~50+ results in the past 7 days (per adset for ABO, or per campaign for CBO). A campaign with 50+ lifetime results but only 2 results this week has NOT exited Learning Phase.
 - CPL/CPA at or below target (or acceptable for the business)
 - Delivery is consistent — not frequently limited by budget or audience
 

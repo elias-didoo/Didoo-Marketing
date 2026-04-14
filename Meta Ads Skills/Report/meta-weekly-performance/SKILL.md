@@ -1,6 +1,6 @@
 ---
-name: meta-weekly-performance
-description: "[Didoo AI] Generates a structured weekly performance report for Meta Ads accounts. Use at the end of each week to review performance, explain changes, and identify what needs attention. Pairs with meta-daily-pulse for daily context."
+name: meta-ads-weekly-performance
+description: "[Didoo AI] Generates a structured weekly performance report for Meta Ads accounts. Use at the end of each week to review performance, explain changes, and identify what needs attention. Pairs with meta-ads-daily-pulse for daily context."
 ---
 
 ## Required Credentials

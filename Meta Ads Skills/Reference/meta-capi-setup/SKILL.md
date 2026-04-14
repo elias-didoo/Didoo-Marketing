@@ -1,5 +1,5 @@
 ---
-name: meta-capi-setup
+name: meta-ads-capi-setup
 description: "[Didoo AI] Step-by-step guide for setting up Meta Conversions API (CAPI) — server-side event tracking that improves conversion measurement accuracy and reduces CPA discrepancy vs pixel-only tracking. Use when setting up tracking for a new account or when CPA shown in Meta Ads Manager is significantly higher than actual leads/sales."
 ---
 
@@ -11,7 +11,7 @@ description: "[Didoo AI] Step-by-step guide for setting up Meta Conversions API 
 | META_ACCESS_TOKEN | Meta Developer Console → Graph API Explorer → Generate Token | All Meta Marketing API calls |
 | META_PIXEL_ID | Meta Events Manager → select your Pixel → copy Pixel ID | Identifying which pixel to configure |
 
-> META_APP_ID and META_APP_SECRET are not needed — the access token alone is sufficient for all API operations in this skill.
+> **Token note:** The System User access token (generated in Business Settings) is the primary credential for CAPI API calls. You still need a registered Meta App (App ID) to set up the CAPI integration in Events Manager — the App ID is required when creating the System User and configuring token permissions. Make sure the token includes these scopes: `ads_management`, `business_management`, `pages_read_engagement`.
 
 ---
 
@@ -33,8 +33,9 @@ If you're not using CAPI, you're likely overpaying for every lead. The gap can b
 ## Prerequisites
 Before setting up CAPI, you need:
 1. Meta Pixel installed on your website
-2. A server environment that can send HTTP requests (or a partner integration like Shopify, WooCommerce, Zapier, or Google Tag Manager Server-side)
-3. Access to your Meta Business Manager with pixel-level permissions
+2. A Meta App registered at developers.facebook.com (App ID required to configure CAPI in Events Manager)
+3. A server environment that can send HTTP requests (or a partner integration like Shopify, WooCommerce, Zapier, or Google Tag Manager Server-side)
+4. Access to your Meta Business Manager with pixel-level permissions
 
 ---
 
@@ -68,7 +69,7 @@ Only use these if you are a developer or using a platform without native Meta in
 | Meta Conversions API via Meta Business Manager | Simple server events without developer resources | Low |
 | Direct API Integration | Developers building custom infrastructure | High |
 
-For Direct API: use your META_ACCESS_TOKEN to send events to `https://graph.facebook.com/v19.0/{pixel_id}/events`.
+For Direct API: use your META_ACCESS_TOKEN to send events to `https://graph.facebook.com/v21.0/{pixel_id}/events`.
 
 ---
 

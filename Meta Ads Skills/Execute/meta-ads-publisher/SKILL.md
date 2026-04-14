@@ -12,11 +12,11 @@ description: "[Didoo AI] Executes Meta Ads campaign management tasks — creates
 > META_APP_ID and META_APP_SECRET are not needed — the access token alone is sufficient for all API operations.
 
 ## How to Call the Meta API
-Use exec + curl with your META_ACCESS_TOKEN. All requests go to `https://graph.facebook.com/v19.0/`.
+Use exec + curl with your META_ACCESS_TOKEN. All requests go to `https://graph.facebook.com/v21.0/`.
 
 Example structure:
 ```bash
-curl -X POST "https://graph.facebook.com/v19.0/act_{AD_ACCOUNT_ID}/campaigns" \
+curl -X POST "https://graph.facebook.com/v21.0/act_{AD_ACCOUNT_ID}/campaigns" \
   -d "access_token={META_ACCESS_TOKEN}" \
   -d "name=My Campaign" \
   -d "objective=LEADS" \
@@ -102,27 +102,60 @@ GET /act_{AD_ACCOUNT_ID}/campaigns?fields=id,name,status,objective,daily_budget
 GET /act_{AD_ACCOUNT_ID}/insights?fields=spend,impressions,clicks,results,cpc,cpm,ctr&level=[campaign|adset|ad]&time_range={'since':'YYYY-MM-DD','until':'YYYY-MM-DD'}
 
 ### Duplicate / Clone Campaign
-When you have a winner campaign and want to replicate it to a new audience, geo, or offer:
+When you have a winner campaign and want to replicate it to a new audience, geo, or offer, follow these 6 steps:
 
-Step 1: Get source campaign structure
-GET /act_{AD_ACCOUNT_ID}/campaigns?ids=[CAMPAIGN_ID]&fields=id,name,status,objective,daily_budget
+**Step 1: Get source campaign structure**
+```
+GET https://graph.facebook.com/v21.0/[CAMPAIGN_ID]?fields=id,name,status,objective,daily_budget&access_token=[TOKEN]
+```
 
-Step 2: Get source adsets
-GET /act_{AD_ACCOUNT_ID}/adsets?ids=[ADSET_ID]&fields=id,name,status,optimization_goal,targeting,daily_budget,bid_amount
+**Step 2: Get source adsets**
+```
+GET https://graph.facebook.com/v21.0/[ADSET_ID]?fields=id,name,status,optimization_goal,targeting,daily_budget,bid_amount&access_token=[TOKEN]
+```
 
-Step 3: Get source ads
-GET /act_{AD_ACCOUNT_ID}/ads?ids=[AD_ID]&fields=id,name,status,creative
+**Step 3: Get source ads**
+```
+GET https://graph.facebook.com/v21.0/[AD_ID]?fields=id,name,status,creative&access_token=[TOKEN]
+```
 
-Step 4: Create new campaign (PAUSED)
-POST /act_{AD_ACCOUNT_ID}/campaigns — name: [NEW_NAME], objective: [SAME AS SOURCE], status: PAUSED
+**Step 4: Create new campaign (PAUSED)**
+```
+POST https://graph.facebook.com/v21.0/act_[AD_ACCOUNT_ID]/campaigns
+  access_token=[TOKEN]
+  name=[NEW_NAME — e.g. "Didoo AI — US — Interest — 2026-04-14"]
+  objective=[SAME AS SOURCE]
+  status=PAUSED
+  budget_type=DAILY
+```
 
-Step 5: Create new adset(s) with modified targeting/budget
-POST /act_{AD_ACCOUNT_ID}/adsets — campaign_id: [NEW CAMPAIGN ID], targeting: [MODIFIED], daily_budget: [NEW BUDGET]
+**Step 5: Create new adset(s) with modified targeting/budget**
+```
+POST https://graph.facebook.com/v21.0/act_[AD_ACCOUNT_ID]/adsets
+  access_token=[TOKEN]
+  campaign_id=[NEW CAMPAIGN ID]
+  name=[NEW ADSET NAME]
+  optimization_goal=[SAME AS SOURCE — e.g. LEAD_GENERATION]
+  targeting=[MODIFIED — change geo, age, interests, etc.]
+  daily_budget=[NEW BUDGET — integer in cents, e.g. 5000 = $50/day]
+  status=PAUSED
+```
 
-Step 6: Create new ad(s)
-POST /act_{AD_ACCOUNT_ID}/ads — adset_id: [NEW ADSET ID], creative: [NEW CREATIVE], status: PAUSED
+**Step 6: Create new ad(s)**
+```
+POST https://graph.facebook.com/v21.0/act_[AD_ACCOUNT_ID]/ads
+  access_token=[TOKEN]
+  adset_id=[NEW ADSET ID]
+  name=[NEW AD NAME]
+  creative={'creative_id': '[NEW_CREATIVE_ID]'}
+  status=PAUSED
+```
 
-Review BEFORE activating.
+**Review BEFORE activating:**
+1. Verify targeting is correct for the new audience
+2. Confirm budget is realistic
+3. Review creative and copy
+4. Set status to ACTIVE only after review
 
 ---
 

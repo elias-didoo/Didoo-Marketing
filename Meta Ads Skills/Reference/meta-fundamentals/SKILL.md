@@ -1,6 +1,6 @@
 ---
-name: meta-fundamentals
-description: "[Didoo AI] Core knowledge that underpins all Meta Ads decision-making — the Meta Auction, Pacing, Breakdown Effect, CBO vs ABO, Learning Phase, Auction Overlap, and Ad Relevance Diagnostics. Reference when explaining campaign behavior, troubleshooting anomalies, or justifying optimization decisions. For skill routing, see meta-guide."
+name: meta-ads-fundamentals
+description: "[Didoo AI] Core knowledge that underpins all Meta Ads decision-making — the Meta Auction, Pacing, Breakdown Effect, CBO vs ABO, Learning Phase, Auction Overlap, and Ad Relevance Diagnostics. Reference when explaining campaign behavior, troubleshooting anomalies, or justifying optimization decisions. For skill routing, see meta-ads-guide."
 ---
 
 # Meta Ads Fundamentals
@@ -60,19 +60,7 @@ If that higher-CPA segment has a slightly higher marginal cost but also a higher
 - Budget is set at the **adset level**
 - You control exactly how much goes to each audience segment
 
-### When to Use CBO
-| Scenario | Structure | Bidding Strategy |
-|----------|-----------|------------------|
-| Testing a new offer | CBO | Lowest Cost |
-| Same offer, multiple audiences | CBO | Lowest Cost |
-| Always-on with stable performance | CBO | Lowest Cost |
-
-### When to Use ABO
-| Scenario | Structure | Bidding Strategy |
-|----------|-----------|------------------|
-| Need to control CPL / have a specific CPA target | ABO | Cost Cap |
-| Multiple geo, budget allocations differ by location | ABO | Cost Cap |
-| Scaling a proven winner | ABO | Target Cost |
+> **CBO vs ABO decision table:** The full decision table (which structure to use for each scenario, with bidding strategy) is in **meta-ads-strategy → Step 4**. This section explains the mechanism only.
 
 ---
 
@@ -139,7 +127,7 @@ Meta provides three relevance diagnostics that compare your ad to competitors ta
 | Concept | Where to find details |
 |---------|-----------------------|
 | CBO vs ABO, bid strategy decisions | meta-ads-strategy Step 4 |
-| Learning Phase behavior | meta-scale-campaign Prerequisites |
+| Learning Phase behavior | meta-ads-scale-campaign Prerequisites |
 | Auction Overlap diagnosis + action | meta-ads-recommendation Step 5 |
 | Ad Relevance Diagnostics | meta-ads-analysis Step 5 |
-| Lead gen LPV / CAPI | meta-lead-gen-analysis |
+| Lead gen LPV / CAPI | meta-ads-lead-gen-analysis |

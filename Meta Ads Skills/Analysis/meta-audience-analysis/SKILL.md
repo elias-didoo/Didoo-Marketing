@@ -1,5 +1,5 @@
 ---
-name: meta-audience-analysis
+name: meta-ads-audience-analysis
 description: "[Didoo AI] Analyzes Meta Ads audience efficiency across audience types, overlap, demographics, and budget allocation. Use when reviewing targeting strategy, planning audience expansion or narrowing, or auditing budget distribution across audience segments."
 ---
 
@@ -11,7 +11,7 @@ description: "[Didoo AI] Analyzes Meta Ads audience efficiency across audience t
 
 ## When to Use
 Before launching new campaigns, during quarterly planning, or when a campaign is underperforming and audience mismatch is suspected.
-Run standalone or after `meta-weekly-performance` identifies audience-related issues.
+Run standalone or after `meta-ads-weekly-performance` identifies audience-related issues.
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-name: meta-drop-diagnosis
+name: meta-ads-drop-diagnosis
 description: "[Didoo AI] Diagnoses sudden performance drops in Meta Ads campaigns. Use when CTR, ROAS, or conversions suddenly decline with no obvious explanation, or when a previously healthy campaign starts underperforming."
 ---
 
@@ -10,7 +10,7 @@ description: "[Didoo AI] Diagnoses sudden performance drops in Meta Ads campaign
 | META_AD_ACCOUNT_ID | Ads Manager URL: `adsmanager.facebook.com/act_XXXXXXXXX` | Identifying which account to query |
 
 ## When to Use
-Triggered by meta-daily-pulse flagging a week-over-week drop > 20%, or when user reports "performance suddenly dropped." Not for gradual decline over weeks (that's creative fatigue territory).
+Triggered by meta-ads-daily-pulse flagging a week-over-week drop > 20%, or when user reports "performance suddenly dropped." Not for gradual decline over weeks (that's creative fatigue territory).
 
 ---
 
