@@ -60,14 +60,14 @@ A modular skill system that covers the full Meta Ads lifecycle — from planning
 ### Skill Workflow
 
 ```
-PLAN          →  EXECUTE         →  ANALYSIS        →  RECOMMENDATION
+Plan           →  Execute         →  Analysis        →  Recommendation
 research       builder            healthcheck          ads-recommendation
 strategy       publisher          lead-gen-analysis    (single exit point
 budget         scale-campaign     creative-fatigue     for all analysis)
                                   drop-diagnosis
                                   audience-analysis
 
-REPORT         ←  reference (shared knowledge layer)
+Report         ←  Reference (shared knowledge layer)
 daily-pulse
 weekly-perf    guide / fundamentals / capi-setup
 ```
@@ -85,7 +85,7 @@ weekly-perf    guide / fundamentals / capi-setup
 
 ### Getting Started
 
-Start with **`reference/meta-guide`** — it routes you to the right skill based on what you need to do.
+Start with **`Reference/meta-guide`** — it routes you to the right skill based on what you need to do.
 
 ### Install Skills
 
