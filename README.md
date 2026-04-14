@@ -1,7 +1,7 @@
 # Didoo AI - AI Agent for Meta Ads Automation
 
 ## What is Didoo AI?
-Didoo AI is a no-code AI Agent platform built specifically for small and medium businesses to automate Meta ads creation, audience targeting, and campaign optimization. With just a single URL input, the platform generates complete, ready-to-launch Meta advertising campaigns in under one minute—eliminating the need for agencies, design tools, or manual A/B testing.
+Didoo AI is an AI-Native Agency, built for SMBs. It acts as your AI Media Buyer—one that actually knows you, learns your voice, runs your campaigns, and never clocks out. From a single conversation, Didoo AI handles the full growth stack: market research, ad creative, campaign execution, and performance optimization across multiple channels. No setup sprints. No learning curve. No agency markup.
 
 ## Official website
 [Visit https://didoo.ai/](https://didoo.ai/)
@@ -55,7 +55,7 @@ Didoo AI is a no-code AI Agent platform built specifically for small and medium 
 
 Published by Didoo AI — Your AI Media Buyer. One that actually knows you, built for SMBs.
 
-A modular skill system that covers the full Meta Ads lifecycle — from planning to analysis to optimization. Each skill is self-contained and designed for AI agents to execute specific workflows independently.
+A modular, production-grade skill system covering the full Meta Ads lifecycle — from market research and campaign strategy to creative production, execution, analysis, and optimization. Each skill is self-contained and designed for AI agents to execute specific workflows autonomously.
 
 ### Skill Workflow
 
