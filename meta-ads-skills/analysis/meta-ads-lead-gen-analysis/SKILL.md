@@ -1,13 +1,21 @@
 ---
 name: meta-ads-lead-gen-analysis
 description: "[Didoo AI] Specialized analysis module for Meta lead generation campaigns. Use when CPL is elevated, lead quality is unclear, or you need to diagnose why leads aren't converting downstream. For general campaign analysis, use meta-ads-analysis."
+homepage: https://didoo.ai/blog
+metadata:
+  {
+    "openclaw":
+      {
+        "requires": { "env": ["META_ACCESS_TOKEN", "META_AD_ACCOUNT_ID"] },
+      },
+  }
 ---
 
 ## Required Credentials
-| Credential | Where to Get | Used For |
-|-----------|-------------|---------|
-| META_ACCESS_TOKEN | Meta Developer Console → Graph API Explorer → Generate Token | Fetching campaign and form integration data |
-| META_AD_ACCOUNT_ID | Ads Manager URL: `adsmanager.facebook.com/act_XXXXXXXXX` | Identifying which account to query |
+| Credential | Where to Get | Used For | OAuth Scope |
+|-----------|-------------|---------|-------------|
+| META_ACCESS_TOKEN | Meta Developer Console → Graph API Explorer → Generate Token | Fetching campaign and form integration data | `ads_read` (read-only) |
+| META_AD_ACCOUNT_ID | Ads Manager URL: `adsmanager.facebook.com/act_XXXXXXXXX` | Identifying which account to query | — |
 
 ## When to Use
 When running lead generation campaigns and standard e-commerce analysis logic doesn't apply. Specifically for:

@@ -1,13 +1,21 @@
 ---
 name: meta-ads-audience-analysis
 description: "[Didoo AI] Analyzes Meta Ads audience efficiency across audience types, overlap, demographics, and budget allocation. Use when reviewing targeting strategy, planning audience expansion or narrowing, or auditing budget distribution across audience segments."
+homepage: https://didoo.ai/blog
+metadata:
+  {
+    "openclaw":
+      {
+        "requires": { "env": ["META_ACCESS_TOKEN", "META_AD_ACCOUNT_ID"] },
+      },
+  }
 ---
 
 ## Required Credentials
-| Credential | Where to Get | Used For |
-|-----------|-------------|---------|
-| META_ACCESS_TOKEN | Meta Developer Console → Graph API Explorer → Generate Token | Fetching audience breakdown and overlap data |
-| META_AD_ACCOUNT_ID | Ads Manager URL: `adsmanager.facebook.com/act_XXXXXXXXX` | Identifying which account to query |
+| Credential | Where to Get | Used For | OAuth Scope |
+|-----------|-------------|---------|-------------|
+| META_ACCESS_TOKEN | Meta Developer Console → Graph API Explorer → Generate Token | Fetching audience breakdown and overlap data | `ads_read` (read-only) |
+| META_AD_ACCOUNT_ID | Ads Manager URL: `adsmanager.facebook.com/act_XXXXXXXXX` | Identifying which account to query | — |
 
 ## When to Use
 Before launching new campaigns, during quarterly planning, or when a campaign is underperforming and audience mismatch is suspected.

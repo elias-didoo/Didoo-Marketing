@@ -1,15 +1,23 @@
 ---
 name: meta-ads-daily-pulse
 description: "[Didoo AI] Rapid daily health scan for Meta Ads — detects week-over-week performance changes and flags urgent issues before meetings. Use every morning or before any daily review meeting. This is a change detector, not a full diagnostic."
+homepage: https://didoo.ai/blog
+metadata:
+  {
+    "openclaw":
+      {
+        "requires": { "env": ["META_ACCESS_TOKEN", "META_AD_ACCOUNT_ID"] },
+      },
+  }
 ---
 
 # Meta Ads Daily Pulse
 
 ## Required Credentials
-| Credential | Where to Get | Used For |
-|-----------|-------------|---------|
-| META_ACCESS_TOKEN | Meta Developer Console → Graph API Explorer → Generate Token | Fetching account and campaign insights |
-| META_AD_ACCOUNT_ID | Ads Manager URL: `adsmanager.facebook.com/act_XXXXXXXXX` | Identifying which account to query |
+| Credential | Where to Get | Used For | OAuth Scope |
+|-----------|-------------|---------|-------------|
+| META_ACCESS_TOKEN | Meta Developer Console → Graph API Explorer → Generate Token | Fetching account and campaign insights | `ads_read` (read-only) |
+| META_AD_ACCOUNT_ID | Ads Manager URL: `adsmanager.facebook.com/act_XXXXXXXXX` | Identifying which account to query | — |
 
 ---
 

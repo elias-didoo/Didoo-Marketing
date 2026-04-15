@@ -1,13 +1,21 @@
 ---
 name: meta-ads-creative-fatigue
 description: "[Didoo AI] Analyzes creative fatigue signals across Meta Ads campaigns. Use when reviewing declining CTR or ROAS, planning creative rotation schedules, or managing creative lifecycle. Run standalone or after meta-ads-daily-pulse flags creative fatigue."
+homepage: https://didoo.ai/blog
+metadata:
+  {
+    "openclaw":
+      {
+        "requires": { "env": ["META_ACCESS_TOKEN", "META_AD_ACCOUNT_ID"] },
+      },
+  }
 ---
 
 ## Required Credentials
-| Credential | Where to Get | Used For |
-|-----------|-------------|---------|
-| META_ACCESS_TOKEN | Meta Developer Console → Graph API Explorer → Generate Token | Fetching ad performance and frequency data |
-| META_AD_ACCOUNT_ID | Ads Manager URL: `adsmanager.facebook.com/act_XXXXXXXXX` | Identifying which account to query |
+| Credential | Where to Get | Used For | OAuth Scope |
+|-----------|-------------|---------|-------------|
+| META_ACCESS_TOKEN | Meta Developer Console → Graph API Explorer → Generate Token | Fetching ad performance and frequency data | `ads_read` (read-only) |
+| META_AD_ACCOUNT_ID | Ads Manager URL: `adsmanager.facebook.com/act_XXXXXXXXX` | Identifying which account to query | — |
 
 ## When to Use
 When creative has been running for 7+ days and performance is declining — or proactively when managing a portfolio of creatives. Use before scheduling creative refresh.

@@ -1,13 +1,21 @@
 ---
 name: meta-ads-analysis
-description: "[Didoo AI] Analyzes Meta Ads campaign performance in depth — metrics, funnel, trends, and anomalies. Use when user wants to understand how a campaign is performing, identify weak points, or get data before receiving recommendations. Outputs structured analysis only; never provides recommendations. Triggers on: \"analyze\", \"deep dive\", \"why is performance\", \"diagnose\", \"full audit\"."
+description: "[Didoo AI] Analyzes Meta Ads campaign performance in depth — metrics, funnel, trends, and anomalies. Use when user wants to understand how a campaign is performing, identify weak points, or get data before receiving recommendations. Outputs structured analysis only; never provides recommendations. Triggers on: "analyze", "deep dive", "why is performance", "diagnose", "full audit"."
+homepage: https://didoo.ai/blog
+metadata:
+  {
+    "openclaw":
+      {
+        "requires": { "env": ["META_ACCESS_TOKEN", "META_AD_ACCOUNT_ID"] },
+      },
+  }
 ---
 
 ## Required Credentials
-| Credential | Where to Get | Used For |
-|-----------|-------------|---------|
-| META_ACCESS_TOKEN | Meta Developer Console → Graph API Explorer → Generate Token | All Meta Marketing API calls |
-| META_AD_ACCOUNT_ID | Ads Manager URL: `adsmanager.facebook.com/act_XXXXXXXXX` | Identifying which account to query |
+| Credential | Where to Get | Used For | OAuth Scope |
+|-----------|-------------|---------|-------------|
+| META_ACCESS_TOKEN | Meta Developer Console → Graph API Explorer → Generate Token | All Meta Marketing API calls | `ads_read` (read-only, least-privilege) |
+| META_AD_ACCOUNT_ID | Ads Manager URL: `adsmanager.facebook.com/act_XXXXXXXXX` | Identifying which account to query | — |
 
 ## When to Use
 Loaded when user wants to understand how their Meta Ads campaign is performing — either a specific aspect (audience, creative, overall) or a full diagnostic. Can run standalone or as prerequisite for meta-ads-recommendation.
@@ -20,7 +28,7 @@ Ask 1–2 quick questions if not already clear from conversation:
 - "Is this an always-on campaign, or tied to a specific promotion?"
 - "Are you testing new things, or trying to scale what's already working?"
 
-Keep it conversational. If user doesn't want to answer, proceed with standard analysis.
+Keep it conversational. If META_ACCESS_TOKEN or META_AD_ACCOUNT_ID is not available, tell the user exactly what is needed and do not proceed with API calls.
 
 ---
 

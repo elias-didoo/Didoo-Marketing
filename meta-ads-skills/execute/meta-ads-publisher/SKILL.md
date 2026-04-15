@@ -1,13 +1,21 @@
 ---
 name: meta-ads-publisher
 description: "[Didoo AI] Executes Meta Ads campaign management tasks — creates new campaigns, makes changes, pauses/activates, changes budgets, duplicates campaigns. Use when user wants to launch or modify campaigns. Requires META_ACCESS_TOKEN."
+homepage: https://didoo.ai/blog
+metadata:
+  {
+    "openclaw":
+      {
+        "requires": { "env": ["META_ACCESS_TOKEN", "META_AD_ACCOUNT_ID"] },
+      },
+  }
 ---
 
 ## Required Credentials
-| Credential | Where to Get | Used For |
-|-----------|-------------|---------|
-| META_ACCESS_TOKEN | Meta Developer Console → Graph API Explorer → Generate Token | All Meta Marketing API calls |
-| META_AD_ACCOUNT_ID | Ads Manager URL: `adsmanager.facebook.com/act_XXXXXXXXX` | All campaign operations |
+| Credential | Where to Get | Used For | OAuth Scope |
+|-----------|-------------|---------|-------------|
+| META_ACCESS_TOKEN | Meta Developer Console → Graph API Explorer → Generate Token | All Meta Marketing API calls | `ads_management` (read+write) |
+| META_AD_ACCOUNT_ID | Ads Manager URL: `adsmanager.facebook.com/act_XXXXXXXXX` | All campaign operations | — |
 
 > META_APP_ID and META_APP_SECRET are not needed — the access token alone is sufficient for all API operations.
 

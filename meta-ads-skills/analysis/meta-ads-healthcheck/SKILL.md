@@ -1,13 +1,21 @@
 ---
 name: meta-ads-healthcheck
 description: "[Didoo AI] Fast on-demand campaign status check — answers \"are my ads working?\" using Green/Yellow/Red thresholds. For daily routine monitoring, use meta-ads-daily-pulse instead."
+homepage: https://didoo.ai/blog
+metadata:
+  {
+    "openclaw":
+      {
+        "requires": { "env": ["META_ACCESS_TOKEN", "META_AD_ACCOUNT_ID"] },
+      },
+  }
 ---
 
 ## Required Credentials
-| Credential | Where to Get | Used For |
-|-----------|-------------|---------|
-| META_ACCESS_TOKEN | Meta Developer Console → Graph API Explorer → Generate Token | Fetching campaign and adset data |
-| META_AD_ACCOUNT_ID | Ads Manager URL: `adsmanager.facebook.com/act_XXXXXXXXX` | Identifying which account to query |
+| Credential | Where to Get | Used For | OAuth Scope |
+|-----------|-------------|---------|-------------|
+| META_ACCESS_TOKEN | Meta Developer Console → Graph API Explorer → Generate Token | Fetching campaign and adset data | `ads_read` (read-only) |
+| META_AD_ACCOUNT_ID | Ads Manager URL: `adsmanager.facebook.com/act_XXXXXXXXX` | Identifying which account to query | — |
 
 ## When to Use
 When user wants a quick "are my ads working?" check — not a deep diagnostic, just a status update. Use before a meeting, or any time something feels off.

@@ -1,13 +1,21 @@
 ---
 name: meta-ads-weekly-performance
 description: "[Didoo AI] Generates a structured weekly performance report for Meta Ads accounts. Use at the end of each week to review performance, explain changes, and identify what needs attention. Pairs with meta-ads-daily-pulse for daily context."
+homepage: https://didoo.ai/blog
+metadata:
+  {
+    "openclaw":
+      {
+        "requires": { "env": ["META_ACCESS_TOKEN", "META_AD_ACCOUNT_ID"] },
+      },
+  }
 ---
 
 ## Required Credentials
-| Credential | Where to Get | Used For |
-|-----------|-------------|---------|
-| META_ACCESS_TOKEN | Meta Developer Console → Graph API Explorer → Generate Token | Fetching account and campaign insights |
-| META_AD_ACCOUNT_ID | Ads Manager URL: `adsmanager.facebook.com/act_XXXXXXXXX` | Identifying which account to query |
+| Credential | Where to Get | Used For | OAuth Scope |
+|-----------|-------------|---------|-------------|
+| META_ACCESS_TOKEN | Meta Developer Console → Graph API Explorer → Generate Token | Fetching account and campaign insights | `ads_read` (read-only) |
+| META_AD_ACCOUNT_ID | Ads Manager URL: `adsmanager.facebook.com/act_XXXXXXXXX` | Identifying which account to query | — |
 
 ## When to Use
 At the end of each week (every Monday) for ongoing campaigns. Also use after a significant change (new campaign launch, major budget shift, creative swap) to document the impact.

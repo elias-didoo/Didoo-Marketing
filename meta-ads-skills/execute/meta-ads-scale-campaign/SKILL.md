@@ -1,15 +1,23 @@
 ---
 name: meta-ads-scale-campaign
 description: "[Didoo AI] Guides Meta Ads campaign scaling — increases budget, expands audiences, replicates to new geos. Use when a testing campaign has exited Learning Phase (~50+ results in the past 7 days, CPL at or below target, stable metrics across 3–5 days) and you want to scale it. Not for campaigns still in testing phase."
+homepage: https://didoo.ai/blog
+metadata:
+  {
+    "openclaw":
+      {
+        "requires": { "env": ["META_ACCESS_TOKEN", "META_AD_ACCOUNT_ID"] },
+      },
+  }
 ---
 
 # Meta Ads Scale Campaign
 
 ## Required Credentials
-| Credential | Where to Get | Used For |
-|-----------|-------------|---------|
-| META_ACCESS_TOKEN | Meta Developer Console → Graph API Explorer → Generate Token | Fetching campaign status and insights |
-| META_AD_ACCOUNT_ID | Ads Manager URL: `adsmanager.facebook.com/act_XXXXXXXXX` | Identifying which account to query |
+| Credential | Where to Get | Used For | OAuth Scope |
+|-----------|-------------|---------|-------------|
+| META_ACCESS_TOKEN | Meta Developer Console → Graph API Explorer → Generate Token | Fetching campaign status and insights | `ads_read` (read-only) |
+| META_AD_ACCOUNT_ID | Ads Manager URL: `adsmanager.facebook.com/act_XXXXXXXXX` | Identifying which account to query | — |
 
 ## When to Use
 Loaded when a testing campaign has proven results and you want to scale it — increase spend, expand audience, or replicate to new geos. Not for campaigns still in testing phase.
