@@ -60,7 +60,7 @@ A modular, production-grade skill system covering the full Meta Ads lifecycle �
 ### Skill Workflow
 
 ```
-Plan               →  Execute            →  Analysis                     →  Recommendation
+plan               →  execute            →  analysis                     →  recommendation
 meta-ads-research   meta-ads-builder      meta-ads-analysis              meta-ads-recommendation
 meta-ads-strategy   meta-ads-publisher     meta-ads-healthcheck            (single exit point
 meta-ads-budget-    meta-ads-scale-       meta-ads-lead-gen-analysis      for all analysis)
@@ -68,7 +68,7 @@ planning            campaign              meta-ads-creative-fatigue
                                           meta-ads-drop-diagnosis
                                           meta-ads-audience-analysis
 
-Report              ←  Reference (shared knowledge layer)
+report              ←  reference (shared knowledge layer)
 meta-ads-daily-pulse
 meta-ads-weekly-    meta-ads-guide / meta-ads-fundamentals / meta-ads-capi-setup
 performance
@@ -78,32 +78,32 @@ performance
 
 | Category | Skills | What it does |
 |----------|--------|--------------|
-| **Reference** | meta-ads-guide, meta-ads-fundamentals, meta-ads-capi-setup | Entry point, core concepts, tracking setup |
-| **Plan** | meta-ads-research, meta-ads-strategy, meta-ads-budget-planning | Market intel, campaign design, budget allocation |
-| **Execute** | meta-ads-builder, meta-ads-publisher, meta-ads-scale-campaign | Creative production, campaign changes, scaling |
-| **Analysis** | meta-ads-analysis, meta-ads-healthcheck, meta-ads-lead-gen-analysis, meta-ads-creative-fatigue, meta-ads-drop-diagnosis, meta-ads-audience-analysis | Performance diagnosis across all dimensions |
-| **Recommendation** | meta-ads-recommendation | Prioritized action plans — all analysis routes here |
-| **Report** | meta-ads-daily-pulse, meta-ads-weekly-performance | Scheduled monitoring and weekly reviews |
+| **reference** | meta-ads-guide, meta-ads-fundamentals, meta-ads-capi-setup | Entry point, core concepts, tracking setup |
+| **plan** | meta-ads-research, meta-ads-strategy, meta-ads-budget-planning | Market intel, campaign design, budget allocation |
+| **execute** | meta-ads-builder, meta-ads-publisher, meta-ads-scale-campaign | Creative production, campaign changes, scaling |
+| **analysis** | meta-ads-analysis, meta-ads-healthcheck, meta-ads-lead-gen-analysis, meta-ads-creative-fatigue, meta-ads-drop-diagnosis, meta-ads-audience-analysis | Performance diagnosis across all dimensions |
+| **recommendation** | meta-ads-recommendation | Prioritized action plans — all analysis routes here |
+| **report** | meta-ads-daily-pulse, meta-ads-weekly-performance | Scheduled monitoring and weekly reviews |
 
 ### Getting Started
 
-Start with **`Reference/meta-guide`** — it routes you to the right skill based on what you need to do.
+Start with **`reference/meta-ads-guide`** — it routes you to the right skill based on what you need to do.
 
-Skills are organized under **`Meta Ads Skills/`** by category (Reference, Plan, Execute, Analysis, Recommendation, Report). Point your agent to the relevant folder path for any specific skill.
+Skills are organized under **`meta-ads-skills/`** by category (reference, plan, execute, analysis, recommendation, report). Point your agent to the relevant folder path for any specific skill.
 
 ### Install Skills
 
 ```bash
 # Clone this repo
-git clone https://github.com/elias-didoo/Didoo-Marketing.git
+git clone https://github.com/elias-didoo/didoo-marketing-suite.git
 
 # Install individual skills by folder path (example with skills.sh CLI)
-npx skills add elias-didoo/Didoo-Marketing --skill Reference/meta-ads-guide
-npx skills add elias-didoo/Didoo-Marketing --skill Analysis/meta-ads-analysis
+npx skills add elias-didoo/didoo-marketing-suite --skill reference/meta-ads-guide
+npx skills add elias-didoo/didoo-marketing-suite --skill analysis/meta-ads-analysis
 
 # Install all skills in a category
-npx skills add elias-didoo/Didoo-Marketing --skill Analysis
-npx skills add elias-didoo/Didoo-Marketing --skill Plan
+npx skills add elias-didoo/didoo-marketing-suite --skill analysis
+npx skills add elias-didoo/didoo-marketing-suite --skill plan
 ```
 
 ## Reviews
