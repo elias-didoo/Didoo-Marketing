@@ -1,4 +1,4 @@
-# Didoo AI - AI Agent for Meta Ads Automation
+# Didoo AI - AI Media Buyer
 
 ## What is Didoo AI?
 Didoo AI is an AI-Native Agency, built for SMBs. It acts as your AI Media Buyer—one that actually knows you, learns your voice, runs your campaigns, and never clocks out. From a single conversation, Didoo AI handles the full growth stack: market research, ad creative, campaign execution, and performance optimization across multiple channels. No setup sprints. No learning curve. No agency markup.
