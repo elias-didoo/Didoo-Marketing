@@ -2,13 +2,6 @@
 name: meta-ads-scale-campaign
 description: "[Didoo AI] Guides Meta Ads campaign scaling — increases budget, expands audiences, replicates to new geos. Use when a testing campaign has exited Learning Phase (~50+ results in the past 7 days, CPL at or below target, stable metrics across 3–5 days) and you want to scale it. Not for campaigns still in testing phase."
 homepage: https://didoo.ai/blog
-metadata:
-  {
-    "openclaw":
-      {
-        "requires": { "env": ["META_ACCESS_TOKEN", "META_AD_ACCOUNT_ID"] },
-      },
-  }
 ---
 
 # Meta Ads Scale Campaign

@@ -2,13 +2,6 @@
 name: meta-ads-drop-diagnosis
 description: "[Didoo AI] Diagnoses sudden performance drops in Meta Ads campaigns. Use when CTR, ROAS, or conversions suddenly decline with no obvious explanation, or when a previously healthy campaign starts underperforming."
 homepage: https://didoo.ai/blog
-metadata:
-  {
-    "openclaw":
-      {
-        "requires": { "env": ["META_ACCESS_TOKEN", "META_AD_ACCOUNT_ID"] },
-      },
-  }
 ---
 
 ## Required Credentials

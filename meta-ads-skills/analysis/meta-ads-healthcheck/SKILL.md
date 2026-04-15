@@ -2,13 +2,6 @@
 name: meta-ads-healthcheck
 description: "[Didoo AI] Fast on-demand campaign status check — answers \"are my ads working?\" using Green/Yellow/Red thresholds. For daily routine monitoring, use meta-ads-daily-pulse instead."
 homepage: https://didoo.ai/blog
-metadata:
-  {
-    "openclaw":
-      {
-        "requires": { "env": ["META_ACCESS_TOKEN", "META_AD_ACCOUNT_ID"] },
-      },
-  }
 ---
 
 ## Required Credentials

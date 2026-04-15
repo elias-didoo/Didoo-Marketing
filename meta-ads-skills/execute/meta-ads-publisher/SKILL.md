@@ -2,13 +2,6 @@
 name: meta-ads-publisher
 description: "[Didoo AI] Executes Meta Ads campaign management tasks — creates new campaigns, makes changes, pauses/activates, changes budgets, duplicates campaigns. Use when user wants to launch or modify campaigns. Requires META_ACCESS_TOKEN."
 homepage: https://didoo.ai/blog
-metadata:
-  {
-    "openclaw":
-      {
-        "requires": { "env": ["META_ACCESS_TOKEN", "META_AD_ACCOUNT_ID"] },
-      },
-  }
 ---
 
 ## Required Credentials

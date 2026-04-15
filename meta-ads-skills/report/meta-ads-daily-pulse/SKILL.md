@@ -2,13 +2,6 @@
 name: meta-ads-daily-pulse
 description: "[Didoo AI] Rapid daily health scan for Meta Ads — detects week-over-week performance changes and flags urgent issues before meetings. Use every morning or before any daily review meeting. This is a change detector, not a full diagnostic."
 homepage: https://didoo.ai/blog
-metadata:
-  {
-    "openclaw":
-      {
-        "requires": { "env": ["META_ACCESS_TOKEN", "META_AD_ACCOUNT_ID"] },
-      },
-  }
 ---
 
 # Meta Ads Daily Pulse

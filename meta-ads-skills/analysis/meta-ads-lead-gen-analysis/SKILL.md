@@ -2,13 +2,6 @@
 name: meta-ads-lead-gen-analysis
 description: "[Didoo AI] Specialized analysis module for Meta lead generation campaigns. Use when CPL is elevated, lead quality is unclear, or you need to diagnose why leads aren't converting downstream. For general campaign analysis, use meta-ads-analysis."
 homepage: https://didoo.ai/blog
-metadata:
-  {
-    "openclaw":
-      {
-        "requires": { "env": ["META_ACCESS_TOKEN", "META_AD_ACCOUNT_ID"] },
-      },
-  }
 ---
 
 ## Required Credentials

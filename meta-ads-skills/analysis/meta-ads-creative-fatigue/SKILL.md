@@ -2,13 +2,6 @@
 name: meta-ads-creative-fatigue
 description: "[Didoo AI] Analyzes creative fatigue signals across Meta Ads campaigns. Use when reviewing declining CTR or ROAS, planning creative rotation schedules, or managing creative lifecycle. Run standalone or after meta-ads-daily-pulse flags creative fatigue."
 homepage: https://didoo.ai/blog
-metadata:
-  {
-    "openclaw":
-      {
-        "requires": { "env": ["META_ACCESS_TOKEN", "META_AD_ACCOUNT_ID"] },
-      },
-  }
 ---
 
 ## Required Credentials
