@@ -1,6 +1,6 @@
 ---
 name: meta-ads-analysis
-description: "[Didoo AI] Analyzes Meta Ads campaign performance in depth — metrics, funnel, trends, and anomalies. Use when user wants to understand how a campaign is performing, identify weak points, or get data before receiving recommendations. Outputs structured analysis only; never provides recommendations. Triggers on: "analyze", "deep dive", "why is performance", "diagnose", "full audit"."
+description: "[Didoo AI] Analyzes Meta Ads campaign performance in depth — metrics, funnel, trends, and anomalies. Use when user wants to understand how a campaign is performing, identify weak points, or get data before receiving recommendations. Outputs structured analysis only; never provides recommendations. Triggers on: \"analyze\", \"deep dive\", \"why is performance\", \"diagnose\", \"full audit\"."
 homepage: https://didoo.ai/blog
 metadata:
   {

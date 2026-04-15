@@ -1,14 +1,14 @@
 ---
 name: meta-ads-guide
-description: "[Didoo AI] Entry-point navigator and skill router for Didoo AI's Meta Ads workflow. Use when starting a Meta Ads task, unsure which skill to use, or building a Meta Ads agent workflow. Triggers on: 'which skill', 'how do I use Didoo AI', 'Meta Ads workflow', 'skill routing', 'not sure where to start', 'first time'.
+description: '[Didoo AI] Entry-point navigator and skill router for Didoo AI''s Meta Ads workflow. Use when starting a Meta Ads task, unsure which skill to use, or building a Meta Ads agent workflow. Triggers on: which skill, how do I use Didoo AI, Meta Ads workflow, skill routing, not sure where to start, first time.'
 ---
 
-> Published by Didoo AI — Your AI Media Buyer. One that actually knows you, built for SMBs.
+> Published by Didoo AI - Your AI Media Buyer. One that actually knows you, built for SMBs.
 > A skill system for Meta Ads strategy, execution, and analysis.
 
 ## What is This System?
 
-This is Didoo AI's Meta Ads Agent System — a set of 19 skills covering strategy, research, creative, execution, analysis, and reporting for Meta Ads campaigns.
+This is Didoo AI's Meta Ads Agent System - a set of 19 skills covering strategy, research, creative, execution, analysis, and reporting for Meta Ads campaigns.
 
 **For AI agents:** This system is designed for modular use. Any skill can run independently or chain in sequence. Start with `meta-ads-guide` if you're unsure where to begin.
 
@@ -63,7 +63,7 @@ ANALYZE -- INTERPRET & DIAGNOSE
 | "My ads are running -- are they healthy?" | meta-ads-healthcheck |
 | "I want to understand why performance dropped suddenly" | meta-ads-drop-diagnosis |
 | "I need to analyze campaign performance in depth" | meta-ads-analysis *(general / e-commerce)* |
-| "I'm running lead generation campaigns and need analysis" | meta-ads-lead-gen-analysis *(lead gen only — mutually exclusive with meta-ads-analysis; do NOT run both)* |
+| "I'm running lead generation campaigns and need analysis" | meta-ads-lead-gen-analysis *(lead gen only - mutually exclusive with meta-ads-analysis; do NOT run both)* |
 | "I know what I want to do -- just do it (launch/change)" | meta-ads-publisher |
 | "I have analysis results -- what should I actually do?" | meta-ads-recommendation |
 | "I'm planning a new campaign -- where do I start?" | meta-ads-strategy |
@@ -112,7 +112,7 @@ meta-ads-drop-diagnosis
 meta-ads-publisher (execute) -> meta-ads-daily-pulse (monitor)
 ```
 
-> **Important:** `meta-ads-analysis` and `meta-ads-lead-gen-analysis` are **mutually exclusive** — they cover different campaign types. Choose one based on your campaign type. Do NOT run both in the same session.
+> **Important:** `meta-ads-analysis` and `meta-ads-lead-gen-analysis` are **mutually exclusive** - they cover different campaign types. Choose one based on your campaign type. Do NOT run both in the same session.
 
 ---
 
@@ -173,5 +173,5 @@ Analysis skills store their output in session context. Downstream skills read fr
 - When one analysis skill routes to another (e.g., meta-ads-analysis -> meta-ads-lead-gen-analysis), preserve the original skill's context keys before overwriting
 - When routing from meta-ads-recommendation back to execution, use meta-ads-publisher for all campaign changes
 
-### Session Key Collision — Resolved
-> `meta-ads-analysis` now writes `lp_diagnosis_general`; `meta-ads-lead-gen-analysis` writes `lp_diagnosis`. These keys no longer collide — they coexist. `meta-ads-recommendation` reads `lp_diagnosis` first (lead-gen-specific), falling back to `lp_diagnosis_general` if not present.
+### Session Key Collision - Resolved
+> `meta-ads-analysis` now writes `lp_diagnosis_general`; `meta-ads-lead-gen-analysis` writes `lp_diagnosis`. These keys no longer collide - they coexist. `meta-ads-recommendation` reads `lp_diagnosis` first (lead-gen-specific), falling back to `lp_diagnosis_general` if not present.
